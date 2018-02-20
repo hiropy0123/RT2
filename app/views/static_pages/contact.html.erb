@@ -8,3 +8,6 @@
   <a href="http://rubyonrails.org/">Ruby on Rails</a>.
   This is the sample application for the tutorial.
 </p>
+<h3>メールでのお問い合わせ</h3>
+<%= mail_to 'abc@test.com', 'メールでのお問い合わせはこちら', subject: "メールでの問い合わせテスト" %>
+<span class="small">※メーラーが起動します。</span>
