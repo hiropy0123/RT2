@@ -1,24 +1,8 @@
-# README
+# Railsチュートリアルの２周目
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+チュートリアルに沿って復習をしながら、v5.1の新機能を試す。
 
-Things you may want to cover:
 
 * Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ruby 2.4.2
+Rails 5.1.5
