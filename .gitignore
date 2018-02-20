@@ -26,3 +26,7 @@
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+
+
+# Ignore Spring files.
+/spring/*.pid
