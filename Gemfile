@@ -30,6 +30,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'ffi', '1.9.18'
 
+gem 'bootstrap', '~> 4.0.0'
+gem 'jquery-rails'
+gem 'popper_js'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
