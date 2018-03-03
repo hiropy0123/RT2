@@ -1,0 +1,16 @@
+<dl>
+  <dt>ユーザー名</dt><dd><%= @user.name %></dd>
+</dl>
+<dl>
+  <dt>メールアドレス</dt><dd><%= @user.email %></dd>
+</dl>
+
+<p>
+  作成：<%= @user.created_at %>
+</p>
+<p>
+  最終更新：<%= @user.updated_at %> / <%= ((Time.now - @user.updated_at) / 60).to_d.floor %>分前
+</p>
+<p>
+  現在時刻：<%= Time.now %>
+</p>
