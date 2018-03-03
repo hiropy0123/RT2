@@ -18,13 +18,13 @@
 body {
     padding-top: 54px;
   }
-  
+
   @media (min-width: 992px) {
     body {
       padding-top: 56px;
     }
   }
-  
+
   .carousel-item {
     height: 65vh;
     min-height: 300px;
@@ -34,8 +34,17 @@ body {
     -o-background-size: cover;
     background-size: cover;
   }
-  
+
   .portfolio-item {
     margin-bottom: 30px;
   }
-  
+
+  // debug debug-area
+  .debug-area {
+    border-top: 1px solid #aaa;
+    margin-top: 70px;
+    padding-top: 30px;
+  }
+  .debug_dump {
+    box-sizing: border-box;
+  }
