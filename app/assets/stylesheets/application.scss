@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap";
+@import "bootstrap";
 
 body {
     padding-top: 54px;
@@ -49,7 +49,6 @@ body {
     box-sizing: border-box;
   }
 
-
 .user-info {
   h1 {
     font-size: 24px;
@@ -59,5 +58,19 @@ body {
       display: block;
       margin: .5rem;
     }
+  }
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px;
+  }
+}
+
+.field_with_errors {
+  .form-control {
+    color: red;
   }
 }
