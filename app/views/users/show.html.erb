@@ -22,7 +22,7 @@
   作成：<%= @user.created_at %>
 </p>
 <p>
-  最終更新：<%= @user.updated_at %> / <%= ((Time.now - @user.updated_at) / 60).to_d.floor %>分前
+  最終更新：<%= @user.updated_at %> / <%= last_update_time %>
 </p>
 <p>
   現在時刻：<%= Time.now %>
