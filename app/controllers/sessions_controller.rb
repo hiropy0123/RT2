@@ -1,8 +1,9 @@
 class SessionsController < ApplicationController
+  # ログインページの表示
   def new
-
   end
 
+  # ログイン処理
   def create
     user = User.find_by( email: params[:session][:email].downcase )
     if user && user.authenticate(params[:session][:password])
@@ -15,7 +16,9 @@ class SessionsController < ApplicationController
     end
   end
 
+  # ログアウト（セッションからユーザーIDを削除）
   def destroy
-
+    log_out
+    redirect_to root_url
   end
 end
