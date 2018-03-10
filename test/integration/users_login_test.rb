@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
+  def setup
+    @user = users(:michael)
+  end
 
   test "login with invalid information" do
     get login_path
@@ -10,6 +13,16 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     get root_path
     assert flash.empty?
+  end
+
+  test "login with valid information" do
+    get login_path
+    post login_path, params: { session: { email: @user.email, password: 'password' } }
+    assert_redirected_to @user # リダイレクト先が正しいかどうか
+    follow_redirect! # 実際にリダイレクトでそのページjに移動する
+    assert_select "a[href=?]", login_path, count: 0 # ログインリンクの数が0
+    assert_select "a[href=?]", logout_path
+    
   end
 
 end
