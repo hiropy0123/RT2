@@ -9,11 +9,35 @@
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "About", about_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "Contact", contact_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "Help", static_pages_help_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "Sign Up", signup_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "ホーム", root_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "初めての方へ", about_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "お問い合わせ", contact_path, class: "nav-link" %></li>
+
+          <% if logged_in? %>
+          <li class="nav-item">
+            <a href="" class="nav-link">コース一覧</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="header-gravatar"><%= gravatar_for @current_user, size: 24 %></span>
+                <%= @current_user.name %>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                <a class="dropdown-item" href="">マイページ</a>
+                <a class="dropdown-item" href="">設定</a>
+                <%= link_to "ヘルプ", static_pages_help_path, class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "ログアウト", logout_path, method: :delete, class: "dropdown-item" %>
+              </div>
+            </li>
+            <li class="nav-item"></li>
+          <% else %>
+            <li class="nav-item"><%= link_to "新規登録", signup_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "ログイン", login_path, class: "nav-link" %></li>
+          <% end %>
+
+
+
         </ul>
       </div>
     </div>

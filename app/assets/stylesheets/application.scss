@@ -74,3 +74,10 @@ body {
     color: red;
   }
 }
+
+.header-gravatar {
+  display: inline-block;
+  img {
+    border-radius: 50%;
+  }
+}
