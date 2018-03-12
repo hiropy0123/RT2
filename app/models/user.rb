@@ -19,14 +19,20 @@ class User < ApplicationRecord
             presence: true,
             length: { minimum: 6 }
 
-  def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
-  end
+
+
+
+  class << self
+    def digest(string)
+      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+      BCrypt::Password.create(string, cost: cost)
+    end
 
   # ランダムなトークンを生成し返す
-  def User.new_token
-    SecureRandom.urlsafe_base64
+    def new_token
+      SecureRandom.urlsafe_base64
+    end
+
   end
 
   # 永続セッションのためにユーザーをデータベースに記憶する
@@ -35,6 +41,12 @@ class User < ApplicationRecord
     self.remember_token = User.new_token
     # データベースに保存するのはremeber_digest
     update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
+  # 渡されたトークンがダイジェストと一致したらtrueを返す
+  def authenticated?(remember_token)
+    # ローカル変数remember_tokenはattr_accessorで定義したremember_tokenとは全く別物！
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
 end
