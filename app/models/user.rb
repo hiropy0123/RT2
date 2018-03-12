@@ -20,8 +20,6 @@ class User < ApplicationRecord
             length: { minimum: 6 }
 
 
-
-
   class << self
     def digest(string)
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
@@ -47,6 +45,11 @@ class User < ApplicationRecord
   def authenticated?(remember_token)
     # ローカル変数remember_tokenはattr_accessorで定義したremember_tokenとは全く別物！
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  # ユーザーのログイン情報を破棄する
+  def forget
+    update_attribute(:remember_digest, nil)
   end
 
 end
