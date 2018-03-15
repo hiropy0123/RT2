@@ -37,7 +37,7 @@ class User < ApplicationRecord
   def remember
     # 自身のremember_token属性に生成されたトークンを保存
     self.remember_token = User.new_token
-    # データベースに保存するのはremeber_digest
+    # データベースに保存するのはremember_digest
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 

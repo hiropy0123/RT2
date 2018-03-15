@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       # ログインフォームで入力されたメールアドレスからユーザーの存在を確認し、さらにパスワードが有効かどうか
       log_in user
       # remember user チェックボックスにチェックしたらremember
-      params[:session][:remember_me] == '1' ? remeber(user) : forget(user)
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to user
     else
       flash.now[:danger] = '入力されたメールアドレスとパスワードの組み合わせが正しくありません。'
