@@ -23,8 +23,8 @@
                 <%= @current_user.name %>
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="">マイページ</a>
-                <a class="dropdown-item" href="">設定</a>
+                <%= link_to "マイページ", user_path, class: "dropdown-item" %>
+                <%= link_to "設定", edit_user_path, class: "dropdown-item" %>
                 <%= link_to "ヘルプ", static_pages_help_path, class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "ログアウト", logout_path, method: :delete, class: "dropdown-item" %>
