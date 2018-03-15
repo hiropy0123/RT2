@@ -36,4 +36,22 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   end
 
+  test 'login with remembering' do
+    # test_helper.rbで定義したlog_in_as テストユーザーでログイン
+    log_in_as(@user, remember_me: '1')
+    # cookiesがemptyでないことを確認
+    assert_not_empty cookies['remember_token']
+  end
+
+  test 'login without remembering' do
+    # Cookieを保存してログイン
+    log_in_as(@user, remember_me: '1')
+    # ログアウト
+    delete logout_path
+    # Cookieを削除してログイン
+    log_in_as(@user, remember_me: '0')
+    # cookiesがemptyになることを確認
+    assert_empty cookies['remember_token']
+  end
+
 end
