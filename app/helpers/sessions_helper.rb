@@ -26,8 +26,7 @@ module SessionsHelper
       @current_user ||= User.find_by(id: user_id)
 
     elsif ( user_id = cookies.signed[:user_id] )
-      # わざとエラーを引き起こす'raise' を入れてテストがパスしてしまう場合は問題！その箇所がテストされていないことを示す。
-      # raise
+
       user = User.find_by(id: user_id)
 
       if user && user.authenticated?(cookies[:remember_token])
